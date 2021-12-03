@@ -59,6 +59,13 @@ app.put("/update",async(req, res)=>{
     }
 });
 
+app.delete("/delete/:id", async (req, res) => {
+    const id = req.params.id;
+
+    await ActorModel.findByIdAndRemove(id).exec();
+    res.send('deleted');
+})
+
 app.listen(3001,()=>{
     console.log('server is running');
 })
